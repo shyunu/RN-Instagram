@@ -7,5 +7,6 @@ module.exports = {
     'react/self-closing-comp': 0, //
     'react-native/no-inline-styles': 0, // 인라인스타일
     'no-trailing-spaces': 0,
+    'react/no-unstable-nested-components': 0,
   },
 };
