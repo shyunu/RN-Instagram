@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import React from 'react';
 
 const searchData = [
@@ -42,24 +42,15 @@ const SearchContent = ({getData}) => {
           <View key={index}>
             {/* 피드 6개 보이기 */}
             {data.id === 0 ? (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                }}>
+              <View style={styles.sixFeedContainer}>
                 {data.images.map((imageData, imageIndex) => {
                   return (
                     <TouchableOpacity
                       key={imageIndex}
                       onPressIn={() => getData(imageData)}
                       onPressOut={() => getData(null)}
-                      style={{paddingBottom: 2, width: '33%'}}>
-                      <Image
-                        source={imageData}
-                        style={{width: '100%', height: 150}}
-                      />
+                      style={styles.sixFeedWrap}>
+                      <Image source={imageData} style={styles.sixFeedImage} />
                     </TouchableOpacity>
                   );
                 })}
@@ -70,41 +61,29 @@ const SearchContent = ({getData}) => {
             {data.id === 1 ? (
               <View
                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    width: '66.5%',
-                    justifyContent: 'space-between',
-                  }}>
+                <View style={styles.fiveFeedContainer}>
                   {data.images.slice(0, 4).map((imageData, imageIndex) => {
                     return (
                       <TouchableOpacity
                         key={imageIndex}
                         onPressIn={() => getData(imageData)}
                         onPressOut={() => getData(null)}
-                        style={{
-                          paddingBottom: 2,
-                          width: '49.5%',
-                        }}>
+                        style={styles.fiveFeedWrap}>
                         <Image
                           source={imageData}
-                          style={{width: '100%', height: 150}}
+                          style={styles.fiveFeedImage}
                         />
                       </TouchableOpacity>
                     );
                   })}
                 </View>
                 <TouchableOpacity
-                  style={{marginLeft: 2, width: '33%'}}
+                  style={styles.fiveFeedWrapLong}
                   onPressIn={() => getData(data.images[4])}
                   onPressOut={() => getData(null)}>
                   <Image
                     source={data.images[4]}
-                    style={{
-                      width: '100%',
-                      height: 300,
-                    }}
+                    style={styles.fiveFeedImageLong}
                   />
                 </TouchableOpacity>
               </View>
@@ -112,40 +91,27 @@ const SearchContent = ({getData}) => {
 
             {/* 큰피드 1개(왼쪽) 그리고 위아래피드 2개(오른쪽) */}
             {data.id === 2 ? (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
+              <View style={styles.threeFeedContainer}>
                 <TouchableOpacity
-                  style={{paddingRight: 2, width: '66.5%'}}
+                  style={styles.threeFeedWrapBig}
                   onPressIn={() => getData(data.images[2])}
                   onPressOut={() => getData(null)}>
                   <Image
                     source={data.images[2]}
-                    style={{width: '100%', height: 300}}
+                    style={styles.threeFeedImageBig}
                   />
                 </TouchableOpacity>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    width: '33%',
-                    justifyContent: 'space-between',
-                  }}>
+                <View style={styles.threeFeedWrap}>
                   {data.images.slice(0, 2).map((imageData, imageIndex) => {
                     return (
                       <TouchableOpacity
                         key={imageIndex}
                         onPressIn={() => getData(imageData)}
                         onPressOut={() => getData(null)}
-                        style={{
-                          paddingBottom: 2,
-                          width: '100%',
-                        }}>
+                        style={styles.threeFeedImageWrap}>
                         <Image
                           source={imageData}
-                          style={{width: '100%', height: 150}}
+                          style={styles.threeFeedImage}
                         />
                       </TouchableOpacity>
                     );
@@ -159,5 +125,73 @@ const SearchContent = ({getData}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  // 6개피드
+  sixFeedContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  sixFeedWrap: {
+    paddingBottom: 2,
+    width: '33%',
+  },
+  sixFeedImage: {
+    width: '100%',
+    height: 150,
+  },
+  // 5개피드
+  fiveFeedContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '66.5%',
+    justifyContent: 'space-between',
+  },
+  fiveFeedWrap: {
+    paddingBottom: 2,
+    width: '49.5%',
+  },
+  fiveFeedImage: {
+    width: '100%',
+    height: 150,
+  },
+  fiveFeedWrapLong: {
+    marginLeft: 2,
+    width: '33%',
+  },
+  fiveFeedImageLong: {
+    width: '100%',
+    height: 300,
+  },
+  // 3개피드
+  threeFeedContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  threeFeedWrapBig: {
+    paddingRight: 2,
+    width: '66.5%',
+  },
+  threeFeedImageBig: {
+    width: '100%',
+    height: 300,
+  },
+  threeFeedWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '33%',
+    justifyContent: 'space-between',
+  },
+  threeFeedImageWrap: {
+    paddingBottom: 2,
+    width: '100%',
+  },
+  threeFeedImage: {
+    width: '100%',
+    height: 150,
+  },
+});
 
 export default SearchContent;

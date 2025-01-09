@@ -12,6 +12,83 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
+import {StyleSheet} from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 10,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 0.2,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 15,
+  },
+  userInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  userImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 100,
+  },
+  postImageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  postImage: {
+    width: '100%',
+    height: 400,
+  },
+  actionContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 15,
+  },
+  actionIcons: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  actionIcon: {
+    paddingRight: 10,
+    fontSize: 20,
+  },
+  likesAndComments: {
+    paddingHorizontal: 15,
+  },
+  likesText: {
+    paddingVertical: 2,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  commentsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  commentInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  commentUserImage: {
+    width: 25,
+    height: 25,
+    borderRadius: 100,
+    backgroundColor: 'orange',
+    marginRight: 10,
+  },
+  commentInput: {
+    opacity: 0.5,
+  },
+  postButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+});
 
 const PostItem = ({data}) => {
   const [like, setLike] = useState(data.isLiked);
@@ -23,16 +100,9 @@ const PostItem = ({data}) => {
         title: `${name}을 클릭했습니다.`,
         body: name,
       });
-
-      // PushNotificationIOS.addNotificationRequest({
-      //     id: name,
-      //     title:  `${name}을 클릭했습니다.`,
-      //     body: name,
-      //     fireDate: new Date(Date.now() + 5 * 1000),
-      // });
     } else {
       PushNotification.getChannels(function (channel_ids) {
-        console.log(channel_ids); // ['channel_id_1']
+        console.log(channel_ids);
       });
 
       PushNotification.cancelAllLocalNotifications();
@@ -45,42 +115,15 @@ const PostItem = ({data}) => {
           'My big text that will be shown when notification is expanded)',
         color: 'red',
       });
-
-      // 특정 시간 이후에 알림 오게 하기
-      // PushNotification.localNotificationSchedule({
-      //     channelId: 'insta-channel',
-      //     title: `${name}를 클릭했습니다.`,
-      //     message: name,
-      //     date: new Date(Date.now() + 5 * 1000),
-      //     allowWhileIdle: true,
-      // })
     }
   };
 
   return (
-    <View
-      style={{
-        paddingBottom: 10,
-        borderBottomColor: 'gray',
-        borderBottomWidth: 0.2,
-      }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: 15,
-        }}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.userInfo}>
           <TouchableOpacity onPress={() => handleNotification(data.postTitle)}>
-            <Image
-              source={data.postPersonImage}
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: 100,
-              }}
-            />
+            <Image source={data.postPersonImage} style={styles.userImage} />
           </TouchableOpacity>
           <View style={{paddingLeft: 5}}>
             <Text style={{fontSize: 15, fontWeight: 'bold'}}>
@@ -90,71 +133,41 @@ const PostItem = ({data}) => {
         </View>
         <Feather name="more-vertical" style={{fontSize: 20}} />
       </View>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Image source={data.postImage} style={{width: '100%', height: 400}} />
+      <View style={styles.postImageContainer}>
+        <Image source={data.postImage} style={styles.postImage} />
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingHorizontal: 12,
-          paddingVertical: 15,
-        }}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={styles.actionContainer}>
+        <View style={styles.actionIcons}>
           <TouchableOpacity onPress={() => setLike(prev => !prev)}>
             <AntDesign
               name={like ? 'heart' : 'hearto'}
-              style={{
-                paddingRight: 10,
-                fontSize: 20,
-                color: like ? 'red' : 'black',
-              }}
+              style={[styles.actionIcon, {color: like ? 'red' : 'black'}]}
             />
           </TouchableOpacity>
           <TouchableOpacity>
-            <Ionic
-              name="chatbubble-outline"
-              style={{fontSize: 20, paddingRight: 10}}
-            />
+            <Ionic name="chatbubble-outline" style={styles.actionIcon} />
           </TouchableOpacity>
           <TouchableOpacity>
-            <Feather name="navigation" style={{fontSize: 20}} />
+            <Feather name="navigation" style={styles.actionIcon} />
           </TouchableOpacity>
         </View>
-        <Feather name="bookmark" style={{fontSize: 20}} />
+        <Feather name="bookmark" style={styles.actionIcon} />
       </View>
-
-      {/* likes &  post comments */}
-      <View style={{paddingHorizontal: 15}}>
+      <View style={styles.likesAndComments}>
         <Text>좋아요 {like ? data.likes + 1 : data.likes}개</Text>
         <Text style={{fontWeight: 700, fontSize: 14, paddingVertical: 2}}>
           게시글 설명글입니다.
         </Text>
-        <Text
-          style={{
-            opacity: 0.4,
-            paddingVertical: 2,
-            marginTop: 5,
-            marginBottom: 5,
-          }}>
-          댓글 모두 보기
-        </Text>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <Text style={styles.likesText}>댓글 모두 보기</Text>
+        <View style={styles.commentsContainer}>
+          <View style={styles.commentInputContainer}>
             <Image
               source={data.postPersonImage}
-              style={{
-                width: 25,
-                height: 25,
-                borderRadius: 100,
-                backgroundColor: 'orange',
-                marginRight: 10,
-              }}
+              style={styles.commentUserImage}
             />
-            <TextInput placeholder="댓글 달기..." style={{opacity: 0.5}} />
+            <TextInput placeholder="댓글 달기..." style={styles.commentInput} />
           </View>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={styles.postButton}>
             <Text style={{color: '#0095f6'}}>게시</Text>
           </View>
         </View>
