@@ -3,6 +3,7 @@ import React from 'react';
 import ProfileBody from '../components/ProfileBody';
 import ProfileButton from '../components/ProfileButton';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {StyleSheet} from 'react-native';
 
 const Profile = () => {
   let circles = [];
@@ -12,38 +13,19 @@ const Profile = () => {
     circles.push(
       <View key={index}>
         {index === 0 ? (
-          <View
-            style={{
-              width: 60,
-              height: 60,
-              borderRadius: 100,
-              borderWidth: 1,
-              opacity: 0.7,
-              marginHorizontal: 5,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Entypo name="plus" style={{fontSize: 40, color: 'black'}} />
+          <View style={styles.plusCircle}>
+            <Entypo name="plus" style={styles.plusIcon} />
           </View>
         ) : (
-          <View
-            style={{
-              width: 60,
-              height: 60,
-              borderRadius: 100,
-              backgroundColor: 'black',
-              opacity: 0.1,
-              marginHorizontal: 5,
-            }}
-          />
+          <View style={styles.circle} />
         )}
       </View>,
     );
   }
 
   return (
-    <SafeAreaView style={{width: '100%', backgroundColor: 'white'}}>
-      <View style={{width: '100%', padding: 10}}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.profileBodyContainer}>
         <ProfileBody
           name="shyunu"
           accountName="shyunu"
@@ -64,14 +46,48 @@ const Profile = () => {
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        style={{
-          paddingVertical: 5,
-          paddingHorizontal: 10,
-        }}>
+        style={styles.scrollView}>
         {circles}
       </ScrollView>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    backgroundColor: 'white',
+  },
+  profileBodyContainer: {
+    width: '100%',
+    padding: 10,
+  },
+  plusCircle: {
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    borderWidth: 1,
+    opacity: 0.7,
+    marginHorizontal: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  plusIcon: {
+    fontSize: 40,
+    color: 'black',
+  },
+  circle: {
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    backgroundColor: 'black',
+    opacity: 0.1,
+    marginHorizontal: 5,
+  },
+  scrollView: {
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+  },
+});
 
 export default Profile;

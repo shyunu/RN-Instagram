@@ -1,4 +1,11 @@
-import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import React from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
@@ -40,7 +47,10 @@ const storyInfo = [
 const Stories = () => {
   const navigation = useNavigation();
   return (
-    <ScrollView horizontal={true} style={{paddingVertical: 20}}>
+    <ScrollView
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
+      style={styles.storyContainer}>
       {storyInfo.map((data, index) => {
         return (
           <TouchableOpacity
@@ -51,53 +61,14 @@ const Stories = () => {
                 image: data.image,
               })
             }>
-            <View
-              style={{
-                flexDirection: 'column',
-                paddingHorizontal: 8,
-                position: 'relative',
-              }}>
+            <View style={styles.storyWrap}>
               {data.id === 1 ? (
-                <View
-                  style={{
-                    position: 'absolute',
-                    bottom: 15,
-                    right: 10,
-                    zIndex: 1,
-                  }}>
-                  <Entypo
-                    name="circle-with-plus"
-                    style={{
-                      fontSize: 20,
-                      color: '#405de6',
-                      backgroundColor: 'white',
-                      borderRadius: 10,
-                      overflow: 'hidden',
-                    }}
-                  />
+                <View style={styles.addStoryWrap}>
+                  <Entypo name="circle-with-plus" style={styles.addIcon} />
                 </View>
               ) : null}
-              <View
-                style={{
-                  width: 68,
-                  height: 68,
-                  backgroundColor: 'white',
-                  borderWidth: 1.8,
-                  borderRadius: 100,
-                  borderColor: '#c13584',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Image
-                  source={data.image}
-                  style={{
-                    resizeMode: 'cover',
-                    width: '92%',
-                    height: '92%',
-                    borderRadius: 100,
-                    backgroundColor: 'orange',
-                  }}
-                />
+              <View style={styles.storyCircle}>
+                <Image source={data.image} style={styles.storyProfile} />
               </View>
               <Text></Text>
             </View>
@@ -107,5 +78,46 @@ const Stories = () => {
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  storyContainer: {
+    paddingVertical: 20,
+  },
+  storyWrap: {
+    flexDirection: 'column',
+    paddingHorizontal: 8,
+    position: 'relative',
+  },
+  addStoryWrap: {
+    position: 'absolute',
+    bottom: 15,
+    right: 10,
+    zIndex: 1,
+  },
+  addIcon: {
+    fontSize: 20,
+    color: '#405de6',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  storyCircle: {
+    width: 68,
+    height: 68,
+    backgroundColor: 'white',
+    borderWidth: 1.8,
+    borderRadius: 100,
+    borderColor: '#c13584',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  storyProfile: {
+    resizeMode: 'cover',
+    width: '92%',
+    height: '92%',
+    borderRadius: 100,
+    backgroundColor: 'orange',
+  },
+});
 
 export default Stories;

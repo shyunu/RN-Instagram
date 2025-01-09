@@ -43,7 +43,7 @@ const FriendItem = ({data, name}) => {
             onPress={() => setFollow(prev => !prev)}
             style={{
               width: '80%',
-              paddingVertical: 10
+              paddingVertical: 10,
             }}>
             <View
               style={{

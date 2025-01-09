@@ -7,88 +7,120 @@ import {
   TextInput,
 } from 'react-native';
 import React from 'react';
+import {StyleSheet} from 'react-native';
 
 const EditProfile = ({route, navigation}) => {
   const {name, accountName, profileImage} = route.params;
 
   return (
-    <SafeAreaView style={{width: '100%', backgroundColor: 'white'}}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: 10,
-        }}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.goBack();
-          }}>
-          <Text>취소</Text>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.cancelText}>취소</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Text style={{fontSize: 16, fontWeight: 'bold'}}>프로필 수정</Text>
+          <Text style={styles.editText}>프로필 수정</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.goBack();
-          }}>
-          <Text style={{color: '#3493d9'}}>완료</Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.doneText}>완료</Text>
         </TouchableOpacity>
-      </View>
-      <View style={{padding: 20, alignItems: 'center'}}>
-        <Image
-          source={profileImage}
-          style={{width: 80, height: 80, borderRadius: 100}}
-        />
-        <Text style={{color: '#3493d9', marginTop: 10}}>
-          프로필 사진 바꾸기
-        </Text>
       </View>
 
-      <View style={{padding: 10}}>
-        <View style={{paddingVertical: 10}}>
-          <Text style={{opacity: 0.5}}>이름</Text>
+      <View style={styles.profileImageContainer}>
+        <Image source={profileImage} style={styles.profileImage} />
+        <Text style={styles.changePhotoText}>프로필 사진 바꾸기</Text>
+      </View>
+
+      <View style={styles.inputContainer}>
+        <View style={styles.inputGroup}>
+          <Text style={styles.labelText}>이름</Text>
           <TextInput
             placeholder="이름"
             defaultValue={name}
-            style={{fontSize: 16, borderBottomWidth: 1, borderColor: '#cdcdcd'}}
+            style={styles.textInput}
           />
         </View>
-        <View style={{paddingVertical: 10}}>
-          <Text style={{opacity: 0.5}}>사용자 이름</Text>
+        <View style={styles.inputGroup}>
+          <Text style={styles.labelText}>사용자 이름</Text>
           <TextInput
             placeholder="사용자 이름"
             defaultValue={accountName}
-            style={{fontSize: 16, borderBottomWidth: 1, borderColor: '#cdcdcd'}}
+            style={styles.textInput}
           />
         </View>
-        <View style={{paddingVertical: 10}}>
-          <Text style={{opacity: 0.5}}>웹사이트</Text>
-          <TextInput
-            placeholder="웹사이트"
-            style={{fontSize: 16, borderBottomWidth: 1, borderColor: '#cdcdcd'}}
-          />
+        <View style={styles.inputGroup}>
+          <Text style={styles.labelText}>웹사이트</Text>
+          <TextInput placeholder="웹사이트" style={styles.textInput} />
         </View>
-        <View style={{paddingVertical: 10}}>
-          <Text style={{opacity: 0.5}}>이름</Text>
-          <TextInput
-            placeholder="소개"
-            style={{fontSize: 16, borderBottomWidth: 1, borderColor: '#cdcdcd'}}
-          />
+        <View style={styles.inputGroup}>
+          <Text style={styles.labelText}>소개</Text>
+          <TextInput placeholder="소개" style={styles.textInput} />
         </View>
       </View>
 
-      <View>
-        <Text style={{marginVertical: 5, padding: 10, color: '#3493d9'}}>
-          프로페셔널 계정으로 전환
-        </Text>
-        <Text style={{marginVertical: 5, padding: 10, color: '#3493d9'}}>
-          개인정보 설정
-        </Text>
+      <View style={styles.extraOptions}>
+        <Text style={styles.optionText}>프로페셔널 계정으로 전환</Text>
+        <Text style={styles.optionText}>개인정보 설정</Text>
       </View>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    backgroundColor: 'white',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  cancelText: {
+    fontSize: 16,
+  },
+  editText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  doneText: {
+    color: '#3493d9',
+    fontSize: 16,
+  },
+  profileImageContainer: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 100,
+  },
+  changePhotoText: {
+    color: '#3493d9',
+    marginTop: 10,
+  },
+  inputContainer: {
+    padding: 10,
+  },
+  inputGroup: {
+    paddingVertical: 10,
+  },
+  labelText: {
+    opacity: 0.5,
+  },
+  textInput: {
+    fontSize: 16,
+    borderBottomWidth: 1,
+    borderColor: '#cdcdcd',
+  },
+  extraOptions: {},
+  optionText: {
+    marginVertical: 5,
+    padding: 10,
+    color: '#3493d9',
+  },
+});
 
 export default EditProfile;
