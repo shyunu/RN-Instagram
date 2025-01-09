@@ -2270,6 +2270,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/push-notification-ios@npm:^1.11.0":
+  version: 1.11.0
+  resolution: "@react-native-community/push-notification-ios@npm:1.11.0"
+  dependencies:
+    invariant: ^2.2.4
+  peerDependencies:
+    react: ">=16.6.3"
+    react-native: ">=0.58.4"
+  checksum: d8c8cdd0d4e8112752a13bf2c426618ec8edd91eacadf03f05375648b5f12ffa761e8676e9d6ac9e5bc5ded73c991ab2219c67fe02e110dfaf38f4cb59695868
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.76.5":
   version: 0.76.5
   resolution: "@react-native/assets-registry@npm:0.76.5"
@@ -3029,6 +3041,7 @@ __metadata:
     "@react-native-community/cli": ^15.1.3
     "@react-native-community/cli-platform-android": 15.0.1
     "@react-native-community/cli-platform-ios": 15.0.1
+    "@react-native-community/push-notification-ios": ^1.11.0
     "@react-native/babel-preset": 0.76.5
     "@react-native/eslint-config": 0.76.5
     "@react-native/metro-config": 0.76.5
@@ -3046,6 +3059,7 @@ __metadata:
     react: 18.3.1
     react-native: 0.76.5
     react-native-pager-view: ^6.6.1
+    react-native-push-notification: ^8.1.1
     react-native-safe-area-context: ^5.0.0
     react-native-screens: ^4.4.0
     react-native-status-bar-height: ^2.6.0
@@ -8134,6 +8148,16 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 85488c464c58fc4420ac626169754f50aeaa6f9a4d4964c4d8a73352057827540a5108914f9b031c737e6d83e35223a353c7e3b0557a6151c4a48bf6f7a8b395
+  languageName: node
+  linkType: hard
+
+"react-native-push-notification@npm:^8.1.1":
+  version: 8.1.1
+  resolution: "react-native-push-notification@npm:8.1.1"
+  peerDependencies:
+    "@react-native-community/push-notification-ios": ^1.10.1
+    react-native: ">=0.33"
+  checksum: 64d500c1163eaa4eee549e6e2f8204cac643f91ae918a227e9d93f8261afdebbdaa7ba5d12da0039155cbf6a599032dd15be4ebe53737cbeeadec4469893f00d
   languageName: node
   linkType: hard
 
