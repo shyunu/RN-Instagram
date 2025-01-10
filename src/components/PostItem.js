@@ -14,82 +14,6 @@ import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
 import {StyleSheet} from 'react-native';
 
-const styles = StyleSheet.create({
-  container: {
-    paddingBottom: 10,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 0.2,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 15,
-  },
-  userInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  userImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 100,
-  },
-  postImageContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  postImage: {
-    width: '100%',
-    height: 400,
-  },
-  actionContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 12,
-    paddingVertical: 15,
-  },
-  actionIcons: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  actionIcon: {
-    paddingRight: 10,
-    fontSize: 20,
-  },
-  likesAndComments: {
-    paddingHorizontal: 15,
-  },
-  likesText: {
-    paddingVertical: 2,
-    marginTop: 5,
-    marginBottom: 5,
-  },
-  commentsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  commentInputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  commentUserImage: {
-    width: 25,
-    height: 25,
-    borderRadius: 100,
-    backgroundColor: 'orange',
-    marginRight: 10,
-  },
-  commentInput: {
-    opacity: 0.5,
-  },
-  postButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-});
-
 const PostItem = ({data}) => {
   const [like, setLike] = useState(data.isLiked);
 
@@ -175,5 +99,81 @@ const PostItem = ({data}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 10,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 0.2,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 15,
+  },
+  userInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  userImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 100,
+  },
+  postImageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  postImage: {
+    width: '100%',
+    height: 400,
+  },
+  actionContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 15,
+  },
+  actionIcons: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  actionIcon: {
+    paddingRight: 10,
+    fontSize: 20,
+  },
+  likesAndComments: {
+    paddingHorizontal: 15,
+  },
+  likesText: {
+    paddingVertical: 2,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  commentsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  commentInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  commentUserImage: {
+    width: 25,
+    height: 25,
+    borderRadius: 100,
+    backgroundColor: 'orange',
+    marginRight: 10,
+  },
+  commentInput: {
+    opacity: 0.5,
+  },
+  postButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+});
 
 export default PostItem;
