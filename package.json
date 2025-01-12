@@ -22,7 +22,9 @@
     "react-native-safe-area-context": "^5.0.0",
     "react-native-screens": "^4.4.0",
     "react-native-status-bar-height": "^2.6.0",
-    "react-native-vector-icons": "^10.2.0"
+    "react-native-swiper-flatlist": "^3.2.5",
+    "react-native-vector-icons": "^10.2.0",
+    "react-native-video": "^6.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",

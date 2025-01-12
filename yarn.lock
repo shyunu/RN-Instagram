@@ -3167,7 +3167,9 @@ __metadata:
     react-native-safe-area-context: ^5.0.0
     react-native-screens: ^4.4.0
     react-native-status-bar-height: ^2.6.0
+    react-native-swiper-flatlist: ^3.2.5
     react-native-vector-icons: ^10.2.0
+    react-native-video: ^6.9.1
     react-test-renderer: 18.3.1
     typescript: ^5.7.3
   languageName: unknown
@@ -8295,6 +8297,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-swiper-flatlist@npm:^3.2.5":
+  version: 3.2.5
+  resolution: "react-native-swiper-flatlist@npm:3.2.5"
+  peerDependencies:
+    react-native: ">=0.59.0"
+  checksum: 1fc8dad8cec01d28ca54061bb50c26514ae3a3e88a1be4d5f181d90ae7fd72e2707b78dcc1d3ae07ecf34ea0d8f0a76eded53804b403d0905146955ebcd22815
+  languageName: node
+  linkType: hard
+
 "react-native-tab-view@npm:^4.0.5":
   version: 4.0.5
   resolution: "react-native-tab-view@npm:4.0.5"
@@ -8320,6 +8331,16 @@ __metadata:
     fa6-upgrade: bin/fa6-upgrade.sh
     generate-icon: bin/generate-icon.js
   checksum: fda930df4e63f12533268f5b339ebe4c77c691eae43503328466b3087ed868a06a4593fd246e75ac6b5ec955543eec35608c7922191bdcc3b3a94ed7f3575ef0
+  languageName: node
+  linkType: hard
+
+"react-native-video@npm:^6.9.1":
+  version: 6.9.1
+  resolution: "react-native-video@npm:6.9.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 769b2ef297f1a9c6f886fdae989bb84f8fe4ec516948ebd3c47a433b56d464d8382ddcba1a68b46ff5a8ab79e2e8dcca12c532e540f7c6f036e2d632bbaba6a8
   languageName: node
   linkType: hard
 
