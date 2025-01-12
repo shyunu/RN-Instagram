@@ -30,7 +30,12 @@ const SingleReel = ({item, index, currentIndex}) => {
   const [like, setLike] = useState(item.isLike);
 
   return (
-    <View style={styles.singleReelContainer}>
+    <View
+      style={{
+        width: windowWidth,
+        height: windowHeight,
+        position: 'relative',
+      }}>
       <TouchableOpacity
         activeOpacity={0.9}
         onPress={() => setMute(!mute)}
@@ -44,11 +49,27 @@ const SingleReel = ({item, index, currentIndex}) => {
           paused={currentIndex === index ? false : true}
           source={item.video}
           muted={mute}
-          style={styles.video}
+          style={{
+            width: '100%',
+            height: windowHeight - 120,
+            // bottom: 180,
+            position: 'absolute',
+          }}
         />
       </TouchableOpacity>
-      <Ionic name="volume-mute" style={styles.volumeMuteIcon} />
-      <View style={styles.postInfo}>
+      <Ionic
+        name="volume-mute"
+        style={[
+          styles.volumeMuteIcon,
+          {
+            fontSize: mute ? 23 : 0,
+            top: windowHeight / 3.2,
+            left: windowWidth / 2.2,
+            padding: mute ? 10 : 0,
+          },
+        ]}
+      />
+      <View style={[styles.postInfo, {width: windowWidth}]}>
         <View>
           <TouchableOpacity style={{width: 150}}>
             <View style={styles.titleWrap}>
@@ -95,7 +116,7 @@ const SingleReel = ({item, index, currentIndex}) => {
         <TouchableOpacity style={styles.iconAll}>
           <Feather name="more-vertical" style={styles.iconWhite} />
         </TouchableOpacity>
-        <View style={rightProfileWrap}>
+        <View style={styles.rightProfileWrap}>
           <Image source={item.postProfile} style={styles.rightProfileImage} />
         </View>
       </View>
@@ -104,35 +125,20 @@ const SingleReel = ({item, index, currentIndex}) => {
 };
 
 const styles = StyleSheet.create({
-  singleReelContainer: {
-    width: windowWidth,
-    height: windowHeight,
-    position: 'relative',
-  },
   videoWrap: {
     width: '100%',
     height: '100%',
     position: 'absolute',
   },
-  video: {
-    width: '100%',
-    height: windowHeight - 120,
-    // bottom: 180,
-    position: 'absolute',
-  },
   volumeMuteIcon: {
-    fontSize: mute ? 23 : 0,
     color: 'white',
     position: 'absolute',
-    top: windowHeight / 3.2,
-    left: windowWidth / 2.2,
     backgroundColor: 'rgba(52,52,52,0.9)',
     borderRadius: 100,
-    padding: mute ? 10 : 0,
   },
   postInfo: {
     position: 'absolute',
-    width: windowWidth,
+
     zIndex: 1,
     // bottom: 80,
     bottom: 140,
